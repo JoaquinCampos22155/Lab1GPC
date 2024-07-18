@@ -12,11 +12,9 @@ poligono1 = [(165, 380), (185, 360), (180, 330), (207, 345), (233, 330), (230, 3
 poligono2 = [(321, 335), (288, 286), (339, 251), (374, 302)]
 poligono3 = [(377, 249), (411, 197), (436, 249)]
 poligono4 = [(413, 177), (448, 159), (502, 88), (553, 53), (535, 36), (676, 37), (660, 52),
-(750, 145), (761, 179), (672, 192), (659, 214), (615, 214), (632, 230), (580, 230),
-(597, 215), (552, 214), (517, 144), (466, 180)]
+             (750, 145), (761, 179), (672, 192), (659, 214), (615, 214), (632, 230), (580, 230),
+             (597, 215), (552, 214), (517, 144), (466, 180)]
 poligono5 = [(682, 175), (708, 120), (735, 148), (739, 170)]
-
-
 
 # Función para dibujar líneas 
 def poligono_lineas(screen, points):
@@ -24,7 +22,7 @@ def poligono_lineas(screen, points):
         pygame.draw.line(screen, (255, 255, 255), points[i], points[(i + 1) % len(points)], 1)
 
 # Función para rellenar el polígono 
-def poligono_llenar(screen, points):
+def poligono_llenar(screen, points, color):
     # Limites del polígono
     ymin = min(points, key=lambda p: p[1])[1]
     ymax = max(points, key=lambda p: p[1])[1]
@@ -48,7 +46,7 @@ def poligono_llenar(screen, points):
         intersecciones.sort()
         
         for i in range(0, len(intersecciones), 2):
-            pygame.draw.line(screen, (255, 255, 255), (intersecciones[i], y), (intersecciones[i + 1], y))
+            pygame.draw.line(screen, color, (intersecciones[i], y), (intersecciones[i + 1], y))
 
 # Bucle principal
 running = True
@@ -60,15 +58,16 @@ while running:
     screen.fill((1, 1, 1))
     
     poligono_lineas(screen, poligono1)
-    poligono_llenar(screen, poligono1)
+    poligono_llenar(screen, poligono1, (225, 225, 225))  
     poligono_lineas(screen, poligono2)
-    poligono_llenar(screen, poligono2)
+    poligono_llenar(screen, poligono2, (225, 225, 225))  
     poligono_lineas(screen, poligono3)
-    poligono_llenar(screen, poligono3)
+    poligono_llenar(screen, poligono3, (225, 225, 225))  
     poligono_lineas(screen, poligono4)
-    poligono_llenar(screen, poligono4)
+    poligono_llenar(screen, poligono4, (225, 225, 225))  
     poligono_lineas(screen, poligono5)
-    poligono_llenar(screen, poligono5)
+    poligono_llenar(screen, poligono5, (2.5, 2.5, 2.5))  
+    
     # Actualizar la pantalla
     pygame.display.flip()
 
